@@ -17,6 +17,17 @@ export const useSettingsStore = create<SettingsStore>()(
         set({ theme });
         // Apply theme to document
         document.documentElement.setAttribute('data-theme', theme);
+        
+        // Update theme-color meta tag for PWA
+        const themeColors = {
+          dark: '#1a1a1a',
+          light: '#ffffff',
+          midnight: '#0f172a'
+        };
+        const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+        if (metaThemeColor) {
+          metaThemeColor.setAttribute('content', themeColors[theme]);
+        }
       },
 
       setSelectedDifficulty: (difficulty: Difficulty) => {

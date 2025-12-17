@@ -9,15 +9,26 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
+      devOptions: {
+        enabled: true
+      },
       manifest: {
-        name: 'Sudoku PWA',
+        name: 'Sudoku - Minimalist Puzzle Game',
         short_name: 'Sudoku',
-        description: 'Minimalist Sudoku game with 6 difficulty levels',
-        theme_color: '#ffffff',
-        background_color: '#ffffff',
+        description: 'Minimalist Sudoku PWA with 6 difficulty levels, themes, and statistics tracking',
+        theme_color: '#1a1a1a',
+        background_color: '#1a1a1a',
         display: 'standalone',
         orientation: 'portrait',
+        start_url: '/',
+        scope: '/',
+        categories: ['games', 'entertainment'],
         icons: [
+          {
+            src: 'pwa-64x64.png',
+            sizes: '64x64',
+            type: 'image/png'
+          },
           {
             src: 'pwa-192x192.png',
             sizes: '192x192',
@@ -34,10 +45,21 @@ export default defineConfig({
             type: 'image/png',
             purpose: 'any maskable'
           }
+        ],
+        screenshots: [
+          {
+            src: 'screenshot-1.png',
+            sizes: '1170x2532',
+            type: 'image/png',
+            form_factor: 'narrow'
+          }
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff,woff2}'],
+        cleanupOutdatedCaches: true,
+        skipWaiting: true,
+        clientsClaim: true,
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
@@ -50,6 +72,17 @@ export default defineConfig({
               },
               cacheableResponse: {
                 statuses: [0, 200]
+              }
+            }
+          },
+          {
+            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp)$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'images-cache',
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 60 * 60 * 24 * 30
               }
             }
           }
