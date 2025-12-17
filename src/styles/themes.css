@@ -1,0 +1,116 @@
+/* Theme Variables */
+:root[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #3a3a3a;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --text-muted: #808080;
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --border: #404040;
+  --cell-bg: #2d2d2d;
+  --cell-selected: #1e3a8a;
+  --cell-highlighted: #374151;
+  --cell-number-match: #1e40af;
+  --success: #10b981;
+  --error: #ef4444;
+  --warning: #f59e0b;
+}
+
+:root[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f3f4f6;
+  --bg-tertiary: #e5e7eb;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --border: #d1d5db;
+  --cell-bg: #ffffff;
+  --cell-selected: #dbeafe;
+  --cell-highlighted: #f3f4f6;
+  --cell-number-match: #bfdbfe;
+  --success: #10b981;
+  --error: #ef4444;
+  --warning: #f59e0b;
+}
+
+:root[data-theme="midnight"] {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
+  --accent: #8b5cf6;
+  --accent-hover: #7c3aed;
+  --border: #475569;
+  --cell-bg: #1e293b;
+  --cell-selected: #4c1d95;
+  --cell-highlighted: #334155;
+  --cell-number-match: #5b21b6;
+  --success: #10b981;
+  --error: #f87171;
+  --warning: #fbbf24;
+}
+
+/* Apply theme colors */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.bg-theme-primary {
+  background-color: var(--bg-primary);
+}
+
+.bg-theme-secondary {
+  background-color: var(--bg-secondary);
+}
+
+.bg-theme-tertiary {
+  background-color: var(--bg-tertiary);
+}
+
+.text-theme-primary {
+  color: var(--text-primary);
+}
+
+.text-theme-secondary {
+  color: var(--text-secondary);
+}
+
+.text-theme-muted {
+  color: var(--text-muted);
+}
+
+.border-theme {
+  border-color: var(--border);
+}
+
+.bg-cell {
+  background-color: var(--cell-bg);
+}
+
+.bg-cell-selected {
+  background-color: var(--cell-selected);
+}
+
+.bg-cell-highlighted {
+  background-color: var(--cell-highlighted);
+}
+
+.bg-cell-number-match {
+  background-color: var(--cell-number-match);
+}
+
+.btn-accent {
+  background-color: var(--accent);
+  color: white;
+}
+
+.btn-accent:hover {
+  background-color: var(--accent-hover);
+}
