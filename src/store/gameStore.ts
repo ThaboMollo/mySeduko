@@ -39,7 +39,7 @@ const createInitialState = () => {
 };
 
 // Timer interval ID
-let timerInterval: NodeJS.Timeout | null = null;
+let timerInterval: ReturnType<typeof setInterval> | null = null;
 
 export const useGameStore = create<GameStore>()(
   persist(
@@ -79,7 +79,7 @@ export const useGameStore = create<GameStore>()(
       },
 
       selectCell: (row: number, col: number) => {
-        const { fixedCells, gameStatus, grid } = get();
+        const { gameStatus, grid } = get();
         
         if (gameStatus !== 'playing') return;
 
@@ -168,7 +168,7 @@ export const useGameStore = create<GameStore>()(
               timerInterval = null;
             }
             // Record loss
-            useStatsStore.getState().recordLoss(difficulty);
+            useStatsStore.getState().recordLoss();
             
             // Create game summary
             const summary: GameSummary = {

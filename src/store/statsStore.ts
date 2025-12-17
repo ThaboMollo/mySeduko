@@ -4,7 +4,7 @@ import { GameStats, Difficulty } from '../types/sudoku';
 
 interface StatsStore extends GameStats {
   recordWin: (difficulty: Difficulty, score: number, timeElapsed: number) => void;
-  recordLoss: (difficulty: Difficulty) => void;
+  recordLoss: () => void;
 }
 
 const createInitialStats = (): GameStats => ({
@@ -49,7 +49,7 @@ export const useStatsStore = create<StatsStore>()(
         });
       },
 
-      recordLoss: (difficulty: Difficulty) => {
+      recordLoss: () => {
         const state = get();
         set({
           gamesPlayed: state.gamesPlayed + 1,

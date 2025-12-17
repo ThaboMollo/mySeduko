@@ -1,5 +1,5 @@
 import { SudokuGrid, Difficulty } from '../types/sudoku';
-import { solveSudoku, hasUniqueSolution } from './sudokuSolver';
+import { hasUniqueSolution } from './sudokuSolver';
 import { DIFFICULTY_CONFIGS } from './difficulties';
 
 /**

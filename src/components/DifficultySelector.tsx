@@ -1,10 +1,9 @@
 import React from 'react';
-import { Difficulty } from '../types/sudoku';
 import { DIFFICULTY_CONFIGS, DIFFICULTIES } from '../core/difficulties';
 import { useGameStore } from '../store/gameStore';
 
 export const DifficultySelector: React.FC = () => {
-  const { difficulty, startNewGame, isGameOver, isCompleted } = useGameStore();
+  const { difficulty, startNewGame, gameStatus } = useGameStore();
 
   return (
     <div className="w-full max-w-lg mx-auto">
@@ -37,7 +36,7 @@ export const DifficultySelector: React.FC = () => {
         })}
       </div>
       
-      {(isGameOver || isCompleted) && (
+      {(gameStatus === 'won' || gameStatus === 'lost') && (
         <div className="mt-4 text-center">
           <button
             onClick={() => startNewGame(difficulty)}

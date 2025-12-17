@@ -16,9 +16,9 @@ export function useSudokuGame() {
     difficulty: store.difficulty,
     lives: store.lives,
     score: store.score,
-    isGameOver: store.isGameOver,
-    isCompleted: store.isCompleted,
+    gameStatus: store.gameStatus,
     startTime: store.startTime,
+    timeElapsed: store.timeElapsed,
 
     // Actions
     startNewGame: store.startNewGame,

@@ -1,4 +1,4 @@
-import { SudokuGrid, CellValue } from '../types/sudoku';
+import { SudokuGrid } from '../types/sudoku';
 
 /**
  * Check if a value is valid in a specific cell position
