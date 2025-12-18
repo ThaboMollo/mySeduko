@@ -6,6 +6,7 @@ interface SudokuCellProps {
   highlightState: CellHighlightState;
   row: number;
   col: number;
+  shouldAnimateCorrect?: boolean;
   onSelect: (row: number, col: number) => void;
 }
 
@@ -14,6 +15,7 @@ export const SudokuCell: React.FC<SudokuCellProps> = ({
   highlightState,
   row,
   col,
+  shouldAnimateCorrect = false,
   onSelect
 }) => {
   const { isSelectedCell, isSameRow, isSameCol, isSameBox, isSameNumber, isFixed } = highlightState;
@@ -46,9 +48,10 @@ export const SudokuCell: React.FC<SudokuCellProps> = ({
         transition-all duration-150
         ${getBorderClasses()}
         ${getBackgroundClass()}
-        ${isSelectedCell ? 'ring-2 ring-blue-500 ring-inset' : ''}
+        ${isSelectedCell ? 'ring-2 ring-inset ring-[color:var(--accent)]' : ''}
         ${isFixed ? 'text-theme-primary font-bold' : 'text-theme-secondary'}
         ${!isFixed && !isSelectedCell ? 'hover:opacity-80' : ''}
+        ${shouldAnimateCorrect ? 'cell-correct-anim' : ''}
         active:scale-95
       `}
     >

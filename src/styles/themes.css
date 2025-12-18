@@ -1,21 +1,29 @@
 /* Theme Variables */
 :root[data-theme="dark"] {
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #2d2d2d;
-  --bg-tertiary: #3a3a3a;
-  --text-primary: #ffffff;
-  --text-secondary: #b0b0b0;
-  --text-muted: #808080;
-  --accent: #3b82f6;
-  --accent-hover: #2563eb;
-  --border: #404040;
-  --cell-bg: #2d2d2d;
-  --cell-selected: #1e3a8a;
-  --cell-highlighted: #374151;
-  --cell-number-match: #1e40af;
+  --bg-primary: #0b0d12;
+  --bg-secondary: #121621;
+  --bg-tertiary: #1a2030;
+  --text-primary: #e9eefb;
+  --text-secondary: rgba(233, 238, 251, 0.72);
+  --text-muted: rgba(233, 238, 251, 0.45);
+  --accent: #6ea8ff;
+  --accent-hover: #4f8cff;
+  --border: rgba(233, 238, 251, 0.10);
+  --cell-bg: rgba(18, 22, 33, 0.92);
+  --cell-selected: rgba(110, 168, 255, 0.22);
+  --cell-highlighted: rgba(233, 238, 251, 0.06);
+  --cell-number-match: rgba(110, 168, 255, 0.14);
   --success: #10b981;
   --error: #ef4444;
   --warning: #f59e0b;
+
+  --bg: var(--bg-primary);
+  --panel: var(--bg-secondary);
+  --grid-line: var(--border);
+  --text: var(--text-primary);
+  --muted: var(--text-muted);
+  --highlight: var(--cell-highlighted);
+  --cell-selected-token: var(--cell-selected);
 }
 
 :root[data-theme="light"] {
@@ -35,6 +43,14 @@
   --success: #10b981;
   --error: #ef4444;
   --warning: #f59e0b;
+
+  --bg: var(--bg-primary);
+  --panel: var(--bg-secondary);
+  --grid-line: var(--border);
+  --text: var(--text-primary);
+  --muted: var(--text-muted);
+  --highlight: var(--cell-highlighted);
+  --cell-selected-token: var(--cell-selected);
 }
 
 :root[data-theme="midnight"] {
@@ -54,11 +70,21 @@
   --success: #10b981;
   --error: #f87171;
   --warning: #fbbf24;
+
+  --bg: var(--bg-primary);
+  --panel: var(--bg-secondary);
+  --grid-line: var(--border);
+  --text: var(--text-primary);
+  --muted: var(--text-muted);
+  --highlight: var(--cell-highlighted);
+  --cell-selected-token: var(--cell-selected);
 }
 
 /* Apply theme colors */
 body {
-  background-color: var(--bg-primary);
+  background:
+    radial-gradient(1000px 700px at 50% -200px, rgba(110, 168, 255, 0.16), rgba(0, 0, 0, 0) 60%),
+    var(--bg-primary);
   color: var(--text-primary);
 }
 

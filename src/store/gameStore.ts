@@ -8,6 +8,7 @@ import { useStatsStore } from './statsStore';
 
 interface GameStore extends GameState {
   lastGameSummary: GameSummary | null;
+  lastCorrectMove: { row: number; col: number; value: number; id: string } | null;
   // Actions
   startNewGame: (difficulty: Difficulty) => void;
   selectCell: (row: number, col: number) => void;
@@ -34,7 +35,8 @@ const createInitialState = () => {
     gameStatus: 'idle' as const,
     startTime: 0,
     timeElapsed: 0,
-    lastGameSummary: null
+    lastGameSummary: null,
+    lastCorrectMove: null
   };
 };
 
@@ -61,6 +63,7 @@ export const useGameStore = create<GameStore>()(
           fixedCells: createFixedCellsMap(puzzle),
           selectedCell: null,
           selectedNumber: null,
+          lastCorrectMove: null,
           difficulty,
           lives: INITIAL_LIVES,
           score: 0,
@@ -117,6 +120,18 @@ export const useGameStore = create<GameStore>()(
         const isCorrect = isCorrectPlacement(newGrid, solution, row, col);
         
         if (isCorrect) {
+          const correctMoveId = `${Date.now()}_${row}_${col}_${value}`;
+          set({
+            lastCorrectMove: { row, col, value, id: correctMoveId }
+          });
+
+          setTimeout(() => {
+            const state = get();
+            if (state.lastCorrectMove?.id === correctMoveId) {
+              set({ lastCorrectMove: null });
+            }
+          }, 320);
+
           // Correct placement - add score
           const points = calculateScore(difficulty);
           const newScore = score + points;
